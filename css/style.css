@@ -48,7 +48,6 @@ body.dark {
 *::after {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 html {
@@ -90,7 +89,6 @@ strong {
   width: 90%;
   max-width: 90%;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
 .hidden {

@@ -160,21 +160,29 @@ form?.addEventListener('submit', async e => {
 
   try {
     const formData = new FormData(form);
-    await fetch('https://formsubmit.co/ajax/ivanalex100008@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/ivanalex100008@gmail.com', {
       method: 'POST',
       body: formData,
       headers: {
         'Accept': 'application/json'
       }
     });
-  } catch (err) {
-    console.error('Error al enviar:', err);
+    
+    if (response.ok) {
+      txt?.classList.remove('hidden');
+      loader?.classList.add('hidden');
+      btn.disabled = false;
+      succ?.classList.remove('hidden');
+      form.reset();
+      setTimeout(() => succ?.classList.add('hidden'), 6000);
+    } else {
+      throw new Error('Error en el servidor');
+    }
+  } catch (error) {
+    console.error('Error enviando el formulario:', error);
+    alert('Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.');
+    txt?.classList.remove('hidden');
+    loader?.classList.add('hidden');
+    btn.disabled = false;
   }
-
-  txt?.classList.remove('hidden');
-  loader?.classList.add('hidden');
-  btn.disabled = false;
-  succ?.classList.remove('hidden');
-  form.reset();
-  setTimeout(() => succ?.classList.add('hidden'), 6000);
 });

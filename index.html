@@ -309,7 +309,12 @@
 
             <!-- Formulario -->
             <h3 class="form-heading">Envíanos un mensaje</h3>
-            <form class="contact-form" id="contactForm" novalidate>
+            <form action="https://formsubmit.co/ivanalex100008@gmail.com" method="POST" class="contact-form" id="contactForm" novalidate>
+              <!-- Desactivar Captcha (opcional, recomendable para Ajax) -->
+              <input type="hidden" name="_captcha" value="false">
+              <!-- Página de gracias (por si falla el JavaScript y redirige de forma nativa) -->
+              <input type="hidden" name="_next" value="https://agamfi.org/">
+              
               <div class="form-row">
                 <div class="form-group">
                   <label for="inputName">Nombre</label>
@@ -318,7 +323,8 @@
                 </div>
                 <div class="form-group">
                   <label for="inputContact">Email o Teléfono</label>
-                  <input type="text" id="inputContact" name="contact" placeholder="Para responderte" required />
+                  <!-- FormSubmit detecta mejor el correo si el name es "email" -->
+                  <input type="text" id="inputContact" name="email" placeholder="Para responderte" required />
                   <span class="form-error" id="errorContact"></span>
                 </div>
               </div>
