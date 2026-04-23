@@ -4,19 +4,9 @@
 const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
-// ── Año en el footer ──────────────────────────
-$('currentYear').textContent = new Date().getFullYear();
 
-// ── Logo: fallback si no existe logo.jpeg ─────
-const logoImg = $('logoImg');
-if (logoImg) {
-  logoImg.addEventListener('error', () => {
-    const fb = document.createElement('div');
-    fb.className = 'logo-img-fallback';
-    fb.textContent = 'A';
-    logoImg.replaceWith(fb);
-  });
-}
+
+
 
 // ── Header scroll ─────────────────────────────
 const header = document.querySelector('.header');
@@ -52,16 +42,25 @@ $$('#navLinks .nav-link').forEach(link => {
 const sections = $$('section[id]');
 const navItems = $$('.nav-link');
 
-const navObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      navItems.forEach(l => l.classList.remove('active'));
-      document.querySelector(`.nav-link[href="#${entry.target.id}"]`)?.classList.add('active');
+window.addEventListener('scroll', () => {
+  let currentId = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    // El menú cambia cuando el inicio de la sección llega a 250px del borde superior
+    if (window.scrollY >= sectionTop - 250) {
+      currentId = section.getAttribute('id');
     }
   });
-}, { threshold: 0.35 });
 
-sections.forEach(s => navObserver.observe(s));
+  if (currentId) {
+    navItems.forEach(l => {
+      l.classList.remove('active');
+      if (l.getAttribute('href') === `#${currentId}`) {
+        l.classList.add('active');
+      }
+    });
+  }
+}, { passive: true });
 
 // ── Dark Mode ─────────────────────────────────
 const themeToggle = $('themeToggle');
@@ -159,8 +158,18 @@ form?.addEventListener('submit', async e => {
   loader?.classList.remove('hidden');
   btn.disabled = true;
 
-  // Simulación de envío — reemplaza con fetch() o EmailJS
-  await new Promise(r => setTimeout(r, 1600));
+  try {
+    const formData = new FormData(form);
+    await fetch('https://formsubmit.co/ajax/ivanalex100008@gmail.com', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+  } catch (err) {
+    console.error('Error al enviar:', err);
+  }
 
   txt?.classList.remove('hidden');
   loader?.classList.add('hidden');
