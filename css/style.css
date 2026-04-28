@@ -481,8 +481,14 @@ body.dark .nav-link.active {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: center;
 }
+
+.about-text-col {
+  align-self: start;
+}
+
+
 
 .about-body {
   display: flex;
@@ -501,7 +507,10 @@ body.dark .nav-link.active {
   padding: 36px;
   position: relative;
   transition: var(--transition);
+  align-self: start;
+  margin-top: 1%;
 }
+
 
 body.dark .objectives-card {
   border-color: #065f46;
@@ -561,6 +570,152 @@ body.dark .objectives-title {
   color: var(--text);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+/* =============================================
+   CONDITIONS (FIBROMIALGIA / SFC)
+   ============================================= */
+.conditions {
+  padding: 96px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+}
+
+.conditions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.condition-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: var(--transition);
+}
+
+.condition-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.condition-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.condition-icon-green {
+  background: rgba(5, 150, 105, 0.12);
+}
+
+.condition-icon-purple {
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.condition-icon {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.condition-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.condition-desc {
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.75;
+}
+
+.condition-symptoms {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+}
+
+.condition-symptoms li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.93rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.symptom-dot {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.symptom-dot-green {
+  background: var(--green-light);
+}
+
+.symptom-dot-purple {
+  background: var(--purple);
+}
+
+.condition-note {
+  background: var(--bg2);
+  border-left: 4px solid var(--green-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 14px 18px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+#cardSFC .condition-note {
+  border-left-color: var(--purple);
+}
+
+/* Bloque "Lo que tienen en común" */
+.conditions-shared {
+  margin-top: 40px;
+  background: linear-gradient(135deg, rgba(5,150,105,0.08), rgba(124,58,237,0.08));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.shared-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.shared-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.shared-content p {
+  color: var(--muted);
+  font-size: 0.97rem;
+  line-height: 1.8;
 }
 
 /* =============================================
@@ -987,6 +1142,7 @@ body.dark .form-success {
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  position: relative;
 }
 
 .footer-brand {
@@ -998,10 +1154,12 @@ body.dark .form-success {
 .footer-logo-line {
   font-size: 1.1rem;
   color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .footer-logo-icon {
-  height: 1.8em;
   width: auto;
   vertical-align: middle;
   margin-right: 6px;
@@ -1162,6 +1320,10 @@ body.dark .form-success {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .conditions-grid {
+    grid-template-columns: 1fr;
   }
 
   .contact-card {
