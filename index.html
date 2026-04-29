@@ -416,6 +416,11 @@
                   required></textarea>
                 <span class="form-error" id="errorMessage"></span>
               </div>
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="inputTerms" name="terms" required />
+                <label for="inputTerms">Acepto los <a href="#" target="_blank">términos y condiciones</a> del sitio</label>
+                <span class="form-error" id="errorTerms"></span>
+              </div>
               <button type="submit" class="btn btn-dark btn-full" id="submitForm">
                 <span id="submitText">Enviar Mensaje</span>
                 <span id="submitLoader" class="hidden">Enviando…</span>
@@ -442,6 +447,15 @@
     </section>
 
   </main>
+
+  <!-- ========== ENLACES LEGALES ========== -->
+  <div class="legal-links">
+    <div class="container legal-links-inner">
+      <a href="#">Aviso legal</a>
+      <a href="#">Políticas de privacidad</a>
+      <a href="#">Política de cookies</a>
+    </div>
+  </div>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer" id="footer">

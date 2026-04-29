@@ -1071,6 +1071,44 @@ body.dark .support-title {
   border-color: #ef4444;
 }
 
+.form-group.checkbox-group {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  accent-color: var(--green);
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg2);
+}
+
+.form-group.checkbox-group label {
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.form-group.checkbox-group label a {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+body.dark .form-group.checkbox-group label a {
+  color: var(--green-light);
+}
+
+.form-group.checkbox-group .form-error {
+  width: 100%;
+  margin-top: -6px;
+}
+
+
 .form-error {
   font-size: 0.78rem;
   color: #ef4444;
@@ -1125,6 +1163,50 @@ body.dark .form-success {
 .social-btn:hover {
   border-color: var(--purple);
   transform: translateY(-2px);
+}
+
+/* =============================================
+   LEGAL LINKS
+   ============================================= */
+.legal-links {
+  background: var(--bg2);
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+
+body.dark .legal-links {
+  background: #1e293b;
+  border-top-color: #334155;
+}
+
+.legal-links-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+.legal-links-inner a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.legal-links-inner a:nth-child(1) {
+  text-align: left;
+}
+
+.legal-links-inner a:nth-child(2) {
+  text-align: center;
+}
+
+.legal-links-inner a:nth-child(3) {
+  text-align: right;
+}
+
+.legal-links-inner a:hover {
+  color: var(--green);
 }
 
 /* =============================================
@@ -1406,6 +1488,17 @@ body.dark .form-success {
   }
 
   .footer-copy {
+    text-align: center;
+  }
+
+  .legal-links-inner {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .legal-links-inner a:nth-child(1),
+  .legal-links-inner a:nth-child(2),
+  .legal-links-inner a:nth-child(3) {
     text-align: center;
   }
 }

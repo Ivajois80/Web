@@ -130,20 +130,24 @@ function validate() {
   const name    = $('inputName')?.value.trim();
   const contact = $('inputContact')?.value.trim();
   const message = $('inputMessage')?.value.trim();
+  const terms   = $('inputTerms')?.checked;
 
   clearError('inputName',    'errorName');
   clearError('inputContact', 'errorContact');
   clearError('inputMessage', 'errorMessage');
+  clearError('inputTerms',   'errorTerms');
 
   if (!name)              { setError('inputName',    'errorName',    'El nombre es obligatorio.');            ok = false; }
   if (!contact)           { setError('inputContact', 'errorContact', 'Indica un email o teléfono.');          ok = false; }
   if (!message || message.length < 5) { setError('inputMessage', 'errorMessage', 'Escribe un mensaje.'); ok = false; }
+  if (!terms)             { setError('inputTerms',   'errorTerms',   'Debes aceptar los términos y condiciones.'); ok = false; }
   return ok;
 }
 
 ['inputName','inputContact','inputMessage'].forEach(id => {
   $(id)?.addEventListener('input', () => clearError(id, 'error' + id.replace('input','')));
 });
+$('inputTerms')?.addEventListener('change', () => clearError('inputTerms', 'errorTerms'));
 
 form?.addEventListener('submit', async e => {
   e.preventDefault();
