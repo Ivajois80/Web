@@ -160,7 +160,7 @@ form?.addEventListener('submit', async e => {
 
   try {
     const formData = new FormData(form);
-    const response = await fetch('https://formsubmit.co/ajax/ivanalex100008@gmail.com', {
+    const response = await fetch('https://formsubmit.co/ajax/grupofibro@gmail.com', {
       method: 'POST',
       body: formData,
       headers: {

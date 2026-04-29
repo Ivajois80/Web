@@ -1146,20 +1146,24 @@ body.dark .form-success {
 }
 
 .footer-brand {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex: 1;
 }
 
-.footer-logo-line {
-  font-size: 1.1rem;
-  color: #fff;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.footer-logo-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-copy {
+  flex: 1;
+  text-align: right;
+  font-size: 0.85rem;
+  line-height: 1.7;
 }
 
 .footer-logo-icon {
+  height: 3.8em;
   width: auto;
   vertical-align: middle;
   margin-right: 6px;
@@ -1169,11 +1173,7 @@ body.dark .form-success {
   font-size: 0.85rem;
 }
 
-.footer-copy {
-  text-align: right;
-  font-size: 0.85rem;
-  line-height: 1.7;
-}
+/* Replaced by .footer-copy above */
 
 /* =============================================
    SCROLL TOP
@@ -1335,7 +1335,7 @@ body.dark .form-success {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
   .nav-links {
     position: fixed;
     inset: 0;
@@ -1398,6 +1398,11 @@ body.dark .form-success {
   .footer-inner {
     flex-direction: column;
     text-align: center;
+    gap: 24px;
+  }
+
+  .footer-logo-wrap {
+    order: -1;
   }
 
   .footer-copy {
