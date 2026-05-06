@@ -310,22 +310,54 @@ body.dark .nav-link.active {
   gap: 10px;
 }
 
+/* ── Theme Toggle (sol / luna) ─────────────────── */
 .theme-toggle {
+  position: relative;
   background: var(--bg2);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.15rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition);
+  transition: background 0.35s ease, border-color 0.35s ease,
+              box-shadow 0.35s ease, transform 0.25s ease;
+  overflow: hidden;
 }
 
-.theme-toggle:hover {
-  border-color: var(--green);
+.theme-toggle span {
+  transition: transform 0.35s ease, opacity 0.3s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+/* === MODO CLARO: se ve la LUNA → hover fondo negro === */
+.theme-toggle:has(.icon-moon:not(.hidden)):hover {
+  background: #0f0f1a;
+  border-color: #7c6aff;
+  box-shadow: 0 0 14px rgba(120, 100, 255, 0.55),
+              0 0 28px rgba(80, 60, 200, 0.25);
+  transform: scale(1.12);
+}
+
+.theme-toggle:has(.icon-moon:not(.hidden)):hover .icon-moon {
+  transform: rotate(-15deg) scale(1.25);
+}
+
+/* === MODO OSCURO: se ve el SOL → hover fondo blanco === */
+.theme-toggle:has(.icon-sun:not(.hidden)):hover {
+  background: #fffef0;
+  border-color: #f59e0b;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.65),
+              0 0 30px rgba(245, 158, 11, 0.3);
+  transform: scale(1.12);
+}
+
+.theme-toggle:has(.icon-sun:not(.hidden)):hover .icon-sun {
+  transform: rotate(20deg) scale(1.25);
 }
 
 .hamburger {
