@@ -77,6 +77,28 @@ themeToggle?.addEventListener('click', () => {
   applyTheme();
 });
 
+// ── Destello táctil en móvil (evita que el :hover se quede pegado) ────────
+themeToggle?.addEventListener('touchend', () => {
+  // Quitamos clases anteriores por si acaso
+  themeToggle.classList.remove('touch-flash-moon', 'touch-flash-sun');
+
+  // Forzamos reflow para reiniciar la animación si se pulsa rápido
+  void themeToggle.offsetWidth;
+
+  // La clase se aplica ANTES del click que cambia el icono,
+  // así mostramos el destello del icono que había en ese momento
+  const flashClass = iconMoon?.classList.contains('hidden')
+    ? 'touch-flash-sun'
+    : 'touch-flash-moon';
+
+  themeToggle.classList.add(flashClass);
+
+  // Al terminar la animación se quita sola
+  themeToggle.addEventListener('animationend', () => {
+    themeToggle.classList.remove(flashClass);
+  }, { once: true });
+}, { passive: true });
+
 // ── Reveal on scroll ──────────────────────────
 $$('.reveal').forEach(el => {
   new IntersectionObserver((entries, obs) => {
