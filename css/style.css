@@ -334,40 +334,89 @@ body.dark .nav-link.active {
   line-height: 1;
 }
 
-/* === Hover: solo en dispositivos con ratón real (no queda pegado en móvil) === */
-@media (hover: hover) and (pointer: fine) {
+/* === MODO CLARO: se ve la LUNA → hover fondo negro === */
+.theme-toggle:has(.icon-moon:not(.hidden)):hover {
+  background: #0f0f1a;
+  border-color: #7c6aff;
+  box-shadow: 0 0 14px rgba(120, 100, 255, 0.55),
+              0 0 28px rgba(80, 60, 200, 0.25);
+  transform: scale(1.12);
+}
 
-  /* MODO CLARO: se ve la LUNA → hover fondo negro */
-  .theme-toggle:has(.icon-moon:not(.hidden)):hover {
-    background: #0f0f1a;
-    border-color: #7c6aff;
-    box-shadow: 0 0 14px rgba(120, 100, 255, 0.55),
-                0 0 28px rgba(80, 60, 200, 0.25);
-    transform: scale(1.12);
-  }
+.theme-toggle:has(.icon-moon:not(.hidden)):hover .icon-moon {
+  transform: rotate(-15deg) scale(1.25);
+}
 
-  .theme-toggle:has(.icon-moon:not(.hidden)):hover .icon-moon {
-    transform: rotate(-15deg) scale(1.25);
-  }
+/* === MODO OSCURO: se ve el SOL → hover fondo blanco === */
+.theme-toggle:has(.icon-sun:not(.hidden)):hover {
+  background: #fffef0;
+  border-color: #f59e0b;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.65),
+              0 0 30px rgba(245, 158, 11, 0.3);
+  transform: scale(1.12);
+}
 
-  /* MODO OSCURO: se ve el SOL → hover fondo blanco */
+.theme-toggle:has(.icon-sun:not(.hidden)):hover .icon-sun {
+  transform: rotate(20deg) scale(1.25);
+}
+
+/* === EN MÓVIL: desactivar hover pegado, usar clases de destello táctil === */
+@media (hover: none) {
+  .theme-toggle:has(.icon-moon:not(.hidden)):hover,
   .theme-toggle:has(.icon-sun:not(.hidden)):hover {
-    background: #fffef0;
-    border-color: #f59e0b;
-    box-shadow: 0 0 14px rgba(251, 191, 36, 0.65),
-                0 0 30px rgba(245, 158, 11, 0.3);
-    transform: scale(1.12);
+    background: var(--bg2);
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
   }
-
+  .theme-toggle:has(.icon-moon:not(.hidden)):hover .icon-moon,
   .theme-toggle:has(.icon-sun:not(.hidden)):hover .icon-sun {
-    transform: rotate(20deg) scale(1.25);
+    transform: none;
   }
 }
 
-/* === Feedback táctil en móvil (se ve pero no se queda pegado) === */
-.theme-toggle:active {
-  transform: scale(0.92);
-  opacity: 0.85;
+/* Destello táctil – Luna (fondo negro momentáneo) */
+@keyframes flashMoon {
+  0%   { background: var(--bg2);  border-color: var(--border); box-shadow: none; transform: scale(1); }
+  30%  { background: #0f0f1a;     border-color: #7c6aff;
+          box-shadow: 0 0 14px rgba(120,100,255,0.55); transform: scale(1.14); }
+  70%  { background: #0f0f1a;     border-color: #7c6aff;
+          box-shadow: 0 0 14px rgba(120,100,255,0.55); transform: scale(1.14); }
+  100% { background: var(--bg2);  border-color: var(--border); box-shadow: none; transform: scale(1); }
+}
+
+@keyframes flashMoonIcon {
+  0%, 100% { transform: rotate(0deg)   scale(1); }
+  30%, 70%  { transform: rotate(-15deg) scale(1.25); }
+}
+
+/* Destello táctil – Sol (fondo blanco momentáneo) */
+@keyframes flashSun {
+  0%   { background: var(--bg2);  border-color: var(--border); box-shadow: none; transform: scale(1); }
+  30%  { background: #fffef0;     border-color: #f59e0b;
+          box-shadow: 0 0 14px rgba(251,191,36,0.65); transform: scale(1.14); }
+  70%  { background: #fffef0;     border-color: #f59e0b;
+          box-shadow: 0 0 14px rgba(251,191,36,0.65); transform: scale(1.14); }
+  100% { background: var(--bg2);  border-color: var(--border); box-shadow: none; transform: scale(1); }
+}
+
+@keyframes flashSunIcon {
+  0%, 100% { transform: rotate(0deg)  scale(1); }
+  30%, 70%  { transform: rotate(20deg) scale(1.25); }
+}
+
+.theme-toggle.touch-flash-moon {
+  animation: flashMoon 0.55s ease forwards;
+}
+.theme-toggle.touch-flash-moon .icon-moon {
+  animation: flashMoonIcon 0.55s ease forwards;
+}
+
+.theme-toggle.touch-flash-sun {
+  animation: flashSun 0.55s ease forwards;
+}
+.theme-toggle.touch-flash-sun .icon-sun {
+  animation: flashSunIcon 0.55s ease forwards;
 }
 
 .hamburger {
