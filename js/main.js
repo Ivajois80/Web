@@ -4,10 +4,6 @@
 const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
-
-
-
-
 // ── Header scroll ─────────────────────────────
 const header = document.querySelector('.header');
 const scrollTopBtn = $('scrollTop');
