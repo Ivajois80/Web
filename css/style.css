@@ -1732,17 +1732,19 @@ body.dark .legal-section h3 {
   color: var(--muted);
   font-size: 0.95rem;
   line-height: 1.7;
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
+  display: block;
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 8px;
 }
 
 .legal-section ul li::before {
   content: '•';
   color: var(--green);
   font-weight: 900;
-  flex-shrink: 0;
-  margin-top: 2px;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .legal-section ol {
@@ -1757,7 +1759,9 @@ body.dark .legal-section h3 {
   content: counter(legal-counter) '.';
   color: var(--purple);
   font-weight: 700;
-  flex-shrink: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
   min-width: 20px;
 }
 
@@ -1806,6 +1810,17 @@ body.dark .legal-highlight {
 
 body.dark .legal-highlight strong {
   color: var(--green-light);
+}
+
+.legal-section a:not(.legal-back):not(.legal-links-ext a) {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: var(--transition);
+}
+
+.legal-section a:not(.legal-back):not(.legal-links-ext a):hover {
+  color: var(--purple-light);
 }
 
 .legal-links-ext a {
