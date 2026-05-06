@@ -136,7 +136,7 @@ const form = $('contactForm');
 
 function setError(inputId, errorId, msg) {
   $(inputId)?.classList.add('error');
-  if ($( errorId)) $(errorId).textContent = msg;
+  if ($(errorId)) $(errorId).textContent = msg;
 }
 function clearError(inputId, errorId) {
   $(inputId)?.classList.remove('error');
