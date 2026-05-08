@@ -1506,7 +1506,7 @@ body.dark .legal-links {
   }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 970px) {
   .nav-links {
     position: fixed;
     inset: 0;
